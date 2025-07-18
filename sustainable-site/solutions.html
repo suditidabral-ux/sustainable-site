@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CarbonCore - Solutions</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Page Header */
+    main {
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    main h1 {
+      text-align: center;
+      color: #00796b;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    main p.intro {
+      text-align: center;
+      font-size: 1.15rem;
+      color: #555;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Solution cards grid */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .solution-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      padding: 1.8rem 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .solution-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .solution-card h2 {
+      color: #004d40;
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+    }
+
+    .solution-card p {
+      color: #444;
+      flex-grow: 1;
+      line-height: 1.5;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .solution-card ul {
+      list-style: disc inside;
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 0;
+      padding-left: 1rem;
+    }
+
+    /* Back to dashboard button */
+    .btn-back {
+      display: inline-block;
+      margin: 3rem auto 1rem;
+      background-color: #00796b;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+      text-align: center;
+    }
+    .btn-back:hover,
+    .btn-back:focus {
+      background-color: #004d40;
+      outline: none;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      main h1 {
+        font-size: 2rem;
+      }
+      main p.intro {
+        font-size: 1.05rem;
+      }
+      .solution-card h2 {
+        font-size: 1.2rem;
+      }
+      .btn-back {
+        width: 90%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CarbonCore</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="solutions.html" aria-current="page">Solutions</a>
+      <a href="connect.html">Connect Sensor</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Effective Solutions for Pollution Reduction</h1>
+    <p class="intro">Discover practical ways you can reduce pollution and improve air quality in your daily life, community, and surroundings.</p>
+
+    <section class="solutions-grid" aria-label="List of pollution reduction solutions">
+
+      <article class="solution-card">
+        <h2>Reduce Vehicle Emissions</h2>
+        <p>Vehicles are major contributors to air pollution. Here’s how you can help:</p>
+        <ul>
+          <li>Use public transportation or carpool whenever possible.</li>
+          <li>Maintain your vehicle to reduce emissions.</li>
+          <li>Consider switching to electric or hybrid vehicles.</li>
+        </ul>
+      </article>
+
+      <article class="solution-card">
+        <h2>Minimize Industrial Pollution</h2>
+        <p>Support cleaner industrial practices by:</p>
+        <ul>
+          <li>Advocating for stricter environmental regulations.</li>
+          <li>Encouraging industries to adopt green technologies.</li>
+          <li>Promoting use of renewable energy sources.</li>
+        </ul>
+      </article>
+
+      <article class="solution-card">
+        <h2>Limit Household Pollution</h2>
+        <p>Make your home environment safer by:</p>
+        <ul>
+          <li>Using energy-efficient appliances.</li>
+          <li>Reducing use of harmful cleaning chemicals.</li>
+          <li>Properly disposing of waste and recycling.</li>
+        </ul>
+      </article>
+
+      <article class="solution-card">
+        <h2>Plant Trees and Green Spaces</h2>
+        <p>Increase air quality by:</p>
+        <ul>
+          <li>Participating in tree-planting drives.</li>
+          <li>Creating community gardens.</li>
+          <li>Protecting existing green areas.</li>
+        </ul>
+      </article>
+
+      <article class="solution-card">
+        <h2>Raise Awareness</h2>
+        <p>Help others understand pollution and how to fight it:</p>
+        <ul>
+          <li>Share educational resources.</li>
+          <li>Organize or attend local workshops.</li>
+          <li>Promote sustainable habits on social media.</li>
+        </ul>
+      </article>
+
+    </section>
+
+    <a href="dashboard.html" class="btn-back" role="button">Back to Dashboard</a>
+  </main>
+
+  <footer>
+    <p>© 2025 Sustainable Earth. Created by Lovely Public School, East Delhi.</p>
+  </footer>
+</body>
+</html>
