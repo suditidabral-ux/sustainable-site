@@ -1,12 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Dashboard - Sustainable Earth</title>
   <link rel="stylesheet" href="css/styles.css">
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+  <!-- Leaflet CDN -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+<script>
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      const map = L.map('map').setView([lat, lon], 13);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      L.marker([lat, lon])
+        .addTo(map)
+        .bindPopup("You are here!")
+        .openPopup();
+    }, function (error) {
+      alert("Location access denied or unavailable.");
+    });
+  } else {
+    alert("Geolocation not supported.");
+  }
+</script>
+
 <body>
   <header>
     <h1>Dashboard</h1>
@@ -29,7 +54,7 @@
 
     <section class="card">
       <h2>Location Map</h2>
-      <div id="map" style="height: 300px; width: 100%;"></div>
+      <div id="map" style="height: 300px; width: 100%; border-radius: 12px;"></div>
     </section>
 
     <section class="card">
@@ -43,5 +68,8 @@
   </footer>
 
   <script src="js/script.js"></script>
+
+  
+  
 </body>
 </html>

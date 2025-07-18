@@ -1,30 +1,4 @@
-function initMap() {
-  const mapCenter = { lat: 28.6667, lng: 77.2167 }; // East Delhi coords
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: mapCenter,
-    zoom: 12,
-  });
 
-  // Example sensors (replace with real data)
-  const sensors = [
-    { position: { lat: 28.6788, lng: 77.2340 }, title: "Sensor 1" },
-    { position: { lat: 28.6572, lng: 77.2370 }, title: "Sensor 2" },
-  ];
-
-  sensors.forEach(s => new google.maps.Marker({ position: s.position, map, title: s.title }));
-}
-
-// Dummy pollution values
-function updateLiveValues() {
-  const data = {
-    pm25: (10 + Math.random() * 50).toFixed(1),
-    co2: (350 + Math.random() * 100).toFixed(1),
-    nox: (0.5 + Math.random() * 1.5).toFixed(2)
-  };
-  document.getElementById("pm25").textContent = data.pm25;
-  document.getElementById("co2").textContent = data.co2;
-  document.getElementById("nox").textContent = data.nox;
-}
 
 // Chart showing trend over past 7 days
 function drawChart() {
@@ -63,11 +37,45 @@ function drawChart() {
   });
 }
 
-// On page load
+
 document.addEventListener("DOMContentLoaded", () => {
-  initMap();
-  updateLiveValues();
   drawChart();
-  // Refresh live values every 15 seconds
-  setInterval(updateLiveValues, 15000);
+  updatePollutionLevelsWithAPI();               // ✅ Run once
+  setInterval(updatePollutionLevelsWithAPI, 300000);  // ✅ Repeat every 5 min
 });
+
+
+
+
+
+function updatePollutionLevelsWithAPI() {
+  if (!navigator.geolocation) {
+    alert("Geolocation not supported.");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(function (position) {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+
+    const apiKey = "3cab236649677c21cace71fee34f5556"; // 🔁 Replace with your real API key
+
+    const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        const pollution = data.list[0];
+        document.getElementById("pm25").textContent = pollution.components.pm2_5.toFixed(2);
+        document.getElementById("co2").textContent = pollution.components.co.toFixed(2);
+        document.getElementById("nox").textContent = pollution.components.no2.toFixed(2);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch pollution data:", err);
+      });
+  });
+}
+
+// Refresh every 5 minutes (300000 ms)
+setInterval(updatePollutionLevelsWithAPI, 300000);
+updatePollutionLevelsWithAPI(); // Initial load
