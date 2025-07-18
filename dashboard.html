@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Sustainable Earth</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Dashboard</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="connect.html">Connect Sensor</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Live Pollution Levels</h2>
+      <p>PM2.5: <span id="pm25">--</span> µg/m³</p>
+      <p>CO₂: <span id="co2">--</span> ppm</p>
+      <p>NOx: <span id="nox">--</span> ppm</p>
+    </section>
+
+    <section class="card">
+      <h2>Location Map</h2>
+      <div id="map" style="height: 300px; width: 100%;"></div>
+    </section>
+
+    <section class="card">
+      <h2>Trends Over Time</h2>
+      <canvas id="pollutionChart" height="200"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Sustainable Earth. Made by Lovely Public School, East Delhi.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
